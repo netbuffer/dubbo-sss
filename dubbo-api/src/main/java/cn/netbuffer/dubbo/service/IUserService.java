@@ -1,5 +1,8 @@
 package cn.netbuffer.dubbo.service;
 
+import cn.netbuffer.dubbo.entity.User;
+
 public interface IUserService {
-    String getUser(Long id);
+
+    User getUser(Long id);
 }
