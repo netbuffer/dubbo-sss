@@ -10,7 +10,7 @@
 
     <description>dubbo消费者配置</description>
 
-    <dubbo:application name="demotest-consumer" owner="netbuffer" organization="netbuffer"/>
+    <dubbo:application name="dubbo-sss-consumer" owner="netbuffer" organization="netbuffer"/>
     <dubbo:registry address="zookeeper://localhost:2181"/>
     <dubbo:reference id="userService" interface="cn.netbuffer.dubbo.service.IUserService"/>
 
