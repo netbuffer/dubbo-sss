@@ -1,4 +1,4 @@
-# dubbo_sss
+# dubbo-sss
 
 ## technology stack
 * spring/spring web mvc/spring data jpa 
