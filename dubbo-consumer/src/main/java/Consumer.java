@@ -7,6 +7,6 @@ public class Consumer {
         ApplicationContext context = new ClassPathXmlApplicationContext("consumer.xml");
         System.out.printf("consumer start\n");
         IUserService userService = context.getBean(IUserService.class);
-        System.out.printf("userService.getUser(1L):%s\n",userService.getUser(1L));
+        System.out.printf("userService.getUser(2L):%s\n",userService.getUser(2L));
     }
 }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 seconds">
+    <property name="logname" value="dubbo-sss"/>
+    <property name="logbase" value="/logs/${logname}/"/>
+    <jmxConfigurator/>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="utf-8">
+            <pattern>
+                %date [%thread] %-5level %logger{80} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <appender name="logfile"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Prudent>true</Prudent>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>
+                ${logbase}${logname}.%d{yyyy-MM-dd}.html
+            </FileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.html.HTMLLayout">
+            <Pattern>
+                %date%level%thread%10logger%file%line%msg
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logbase}${logname}-access-%d{yyyy-MM-dd}.html</fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="DEBUG"/>
+    <logger name="java.sql" level="OFF"/>
+    <logger name="cn.netbuffer.dubbo" level="DEBUG"/>
+    <!-- log4j-jdbc-remix/log4jdbc-log4j2 result以表格打印结果 -->
+    <logger name="jdbc.resultsettable" level="INFO"/>
+    <logger name="jdbc.connection" level="OFF"/>
+    <logger name="jdbc.audit" level="OFF"/>
+    <logger name="jdbc.resultset" level="OFF"/>
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <logger name="jdbc.sqltiming" level="INFO"/>
+    <!--<logger name="log4jdbc.debug" level="DEBUG" />-->
+    <!--<logger name="net.sf.ehcache" level="ALL"/>-->
+
+    <logger name="access" level="INFO">
+        <appender-ref ref="ACCESS"/>
+    </logger>
+
+    <root>
+        <level value="DEBUG"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="logfile"/>
+        <appender-ref ref="ACCESS"/>
+    </root>
+</configuration>
